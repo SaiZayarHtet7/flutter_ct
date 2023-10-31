@@ -1,0 +1,20 @@
+name: feature_brick
+description: A brick to create a feature using best practices and your state management of choice!
+version: 0.0.1+1s
+
+vars:
+  feature_name:
+    type: string
+    default: login
+    description: The feature name
+    prompt: What is the feature name?
+  state_management:
+    type: enum
+    default: bloc
+    description: The features state management
+    prompt: What is the features state management?
+    values:
+      - bloc
+      - cubit
+      - none
+
