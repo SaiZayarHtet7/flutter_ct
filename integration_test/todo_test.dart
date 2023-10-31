@@ -71,8 +71,26 @@ void main() {
     await updateUI(tester);
   });
 
+  testWidgets("3: check and unchecked the checkbox ", (tester) async {
+    await tester.pumpRealRouterApp(
+      (child) => child,
+    );
+    await tester.pumpAndSettle(const Duration(seconds: 1));
 
-  testWidgets("3: Deleting todo", (tester) async {
+    final Finder checkboxFinder = find.byKey(const ValueKey('check_todo_0'));
+
+    await tester.tap(checkboxFinder);
+    await tester.pumpAndSettle(const Duration(seconds: 1));
+
+    bool isChecked = false;
+
+    // Get the current state of the checkbox
+    isChecked = tester.widget<Checkbox>(checkboxFinder).value ?? false;
+
+    expect(isChecked, isTrue); //
+  });
+
+  testWidgets("4: Deleting todo", (tester) async {
     await tester.pumpRealRouterApp(
       (child) => child,
     );
